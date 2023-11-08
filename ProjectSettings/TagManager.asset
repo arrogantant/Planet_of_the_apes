@@ -13,6 +13,7 @@ TagManager:
   - EndGameUI
   - GoldTextTag
   - gameOverUI
+  - VirtualJoystick
   layers:
   - Default
   - TransparentFX

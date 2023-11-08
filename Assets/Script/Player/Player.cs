@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public float speed;
@@ -13,6 +14,8 @@ public class Player : MonoBehaviour
     private Animator animator;
     public Collider2D attackCollider;
     private Coroutine damageCoroutine;
+    public VirtualJoystick virtualJoystick;
+    private bool joystickInitialized = false;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -23,12 +26,25 @@ public class Player : MonoBehaviour
         // 1초마다 공격 콜라이더를 활성화하는 ToggleAttack 메서드를 호출합니다.
         InvokeRepeating("ToggleAttack", 0, 1f);
     }
+    private void Update()
+    {
+        // VirtualJoystick이 아직 찾아지지 않았다면 찾습니다.
+        if (!joystickInitialized)
+        {
+            virtualJoystick = FindObjectOfType<VirtualJoystick>();
+
+            if (virtualJoystick != null)
+            {
+                joystickInitialized = true; // 찾았으니 더 이상 찾지 않도록 플래그를 설정합니다.
+            }
+        }
+    }
     
     void FixedUpdate() 
     {
-        if(canMove)
+        if (canMove && virtualJoystick != null)
         {
-            Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
+            Vector2 nextVec = virtualJoystick.InputDirection * speed * Time.fixedDeltaTime;
             rigid.MovePosition(rigid.position + nextVec);
 
             if (nextVec != Vector2.zero)
@@ -127,7 +143,15 @@ public class Player : MonoBehaviour
     {
         Monster.OnMonsterDisabled -= HandleMonsterDisabled;
     }
-
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject joystickObject = GameObject.FindGameObjectWithTag("VirtualJoystick");
+        if (joystickObject != null)
+        {
+            // 찾은 게임 오브젝트에서 VirtualJoystick 컴포넌트를 가져옵니다.
+            virtualJoystick = joystickObject.GetComponent<VirtualJoystick>();
+        }
+    }
     private void HandleMonsterDisabled(Monster monster)
     {
         // 여기서 Monster의 Collider와 현재 Player가 충돌 상태인지 확인하고
