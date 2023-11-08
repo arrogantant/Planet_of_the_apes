@@ -31,9 +31,10 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
             canvasRect, eventData.position, eventData.pressEventCamera, out localPointerPosition))
         {
             Vector2 direction = localPointerPosition - (Vector2)baseRect.localPosition;
-            InputDirection = (direction.magnitude > baseRect.sizeDelta.x / 2f) ? direction.normalized : direction / (baseRect.sizeDelta.x / 2f);
-            handleRect.anchoredPosition = (InputDirection * baseRect.sizeDelta.x / 2f) * 0.4f;
-            canvasGroup.alpha = 1; // 조이스틱을 불투명하게 만듭니다.
+            InputDirection = direction.normalized;
+            // 이동 범위를 좁히기 위해 0.4f 대신 더 작은 값을 사용합니다. 예: 0.2f
+            handleRect.anchoredPosition = (InputDirection * (baseRect.sizeDelta.x / 2f)) * 0.05f; 
+            canvasGroup.alpha = 1;
         }
     }
 
