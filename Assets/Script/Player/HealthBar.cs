@@ -31,7 +31,7 @@ public class HealthBar : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (playerScript != null && healthBar != null)
         {
