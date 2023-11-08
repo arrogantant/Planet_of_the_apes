@@ -242,9 +242,14 @@ public class GameManager : MonoBehaviour
         {
             gameOverUI.SetActive(true);
         }
-
+        VirtualJoystick virtualJoystick = FindObjectOfType<VirtualJoystick>();
+        if (virtualJoystick != null)
+        {
+            virtualJoystick.EnableJoystick(false);
+        }
         // 한 프레임 기다린 후 게임을 일시정지합니다.
         StartCoroutine(PauseAfterFrame());
+
     }
     private IEnumerator PauseAfterFrame()
     {
@@ -341,6 +346,11 @@ public class GameManager : MonoBehaviour
         if (player != null)
         {
             player.SetCanMove(false);
+        }
+        VirtualJoystick virtualJoystick = FindObjectOfType<VirtualJoystick>();
+        if (virtualJoystick != null)
+        {
+            virtualJoystick.EnableJoystick(false);
         }
     }
     private void FindEndGameUI()
