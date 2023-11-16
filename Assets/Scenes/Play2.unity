@@ -30509,7 +30509,7 @@ MonoBehaviour:
   maxMonsterCount: 200
   minSpawnDistance: 15
   maxSpawnDistance: 18
-  bossPrefab: {fileID: 8551723052597519613, guid: e38117608f875624da9c288e724cb534, type: 3}
+  bossPrefab: {fileID: 8551723052597519613, guid: 33a77df86148eb141ba5921f2e50cee6, type: 3}
   timerText: {fileID: 368215916}
   startTime: 50
   endGameUI: {fileID: 1933403859}

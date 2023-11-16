@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
                 timerText.text = "Monster : " + (3 - killedMonstersCount).ToString(); // 이곳을 조절해서 몬스터처리 횟수의 UI를 조절!!
             }
         }
-        else if (currentScene == "Play3") // 스테이지1의 로직
+        else if (currentScene == "Play3") // 스테이지3의 로직
         {
             int minutes = (int)(startTime / 60);
             int seconds = (int)(startTime % 60);
