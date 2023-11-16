@@ -926,6 +926,7 @@ MonoBehaviour:
   timerText: {fileID: 0}
   startTime: 5
   endGameUI: {fileID: 39827801}
+  gameOverUI: {fileID: 0}
   gold: 0
 --- !u!4 &1526026981
 Transform:

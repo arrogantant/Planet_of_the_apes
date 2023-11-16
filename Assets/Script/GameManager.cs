@@ -76,9 +76,21 @@ public class GameManager : MonoBehaviour
                 bossSpawned = true;
             }
         }
-        else if (currentScene == "Play_2") // 스테이지2의 로직
+        else if (currentScene == "Play2") // 스테이지2의 로직
         {
             if (killedMonstersCount >= 3 && !bossSpawned) // 이곳을 조절해서 몬스터처리 횟수를 조절!!
+            {
+                SpawnBoss();
+                bossSpawned = true;
+            }
+        }
+        if (currentScene == "Play3") // 스테이지3의 로직
+        {
+            if (startTime > 0)
+            {
+                startTime -= Time.deltaTime;
+            }
+            else if (!bossSpawned)
             {
                 SpawnBoss();
                 bossSpawned = true;
@@ -112,7 +124,7 @@ public class GameManager : MonoBehaviour
                 isBlinking = true;
             }
         }
-        else if (currentScene == "Play_2") // 스테이지2의 로직
+        else if (currentScene == "Play2") // 스테이지2의 로직
         {
             if (killedMonstersCount >= 3) // 이곳을 조절해서 몬스터처리 횟수를 조절!!
             {
@@ -121,6 +133,25 @@ public class GameManager : MonoBehaviour
             else
             {
                 timerText.text = "Monster : " + (3 - killedMonstersCount).ToString(); // 이곳을 조절해서 몬스터처리 횟수의 UI를 조절!!
+            }
+        }
+        else if (currentScene == "Play3") // 스테이지1의 로직
+        {
+            int minutes = (int)(startTime / 60);
+            int seconds = (int)(startTime % 60);
+            timerText.text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
+
+            if (startTime <= 0)
+            {
+                startTime = 0;
+                timerText.color = new Color(timerText.color.r, timerText.color.g, timerText.color.b, 1);
+                return;
+            }
+
+            if (startTime <= 10 && !isBlinking)
+            {
+                StartCoroutine(BlinkTimerText());
+                isBlinking = true;
             }
         }
     }
