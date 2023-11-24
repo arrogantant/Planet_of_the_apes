@@ -46,7 +46,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         Vector2 desiredVelocity = Seek(playerTransform.position) + AvoidOtherMonstersAndObstacles() + AlignWithOthers() + CohesionWithOthers();
         rb.velocity = desiredVelocity.normalized * speed;

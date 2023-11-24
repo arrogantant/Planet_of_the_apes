@@ -169,5 +169,34 @@ public class Player : MonoBehaviour
             }
         }
     }
-    
+    public void TakeDamage(int damage)
+    {
+        PlayerHP -= damage;
+
+        // 체력이 0 이하인지 확인
+        if (PlayerHP <= 0)
+        {
+            // 게임 오버 처리
+            GameOver();
+        }
+        if (!isTakingDamage)
+        {
+            PlayerHP -= damage;
+            isTakingDamage = true;
+
+            // 데미지를 받은 후 무적 시간 설정
+            StartCoroutine(InvulnerabilityAfterDamage());
+        }
+    }
+    private IEnumerator InvulnerabilityAfterDamage()
+    {
+        yield return new WaitForSeconds(1f); // 예시로 1초 동안 무적
+        isTakingDamage = false;
+    }
+    private void GameOver()
+    {
+        // 게임 오버 로직
+        // 예: 게임 매니저의 GameOver 메서드 호출
+        GameManager.instance.GameOver();
+    }
 }

@@ -8,6 +8,44 @@ public class St_1_Boss : Monster
     public float Health = 80f;
     public Sprite fastMonsterSprite;
     public int stageNumber = 0;
+    private float specialAttackThreshold = 0.5f; // 체력이 50% 이하일 때 특수 공격 사용
+    private float lastAttackTime;
+    private float attackCooldown = 2f;
+    public GameObject projectilePrefab;
+    private void Update()
+    {
+        base.Update();
+
+        if (Time.time > lastAttackTime + attackCooldown)
+        {
+            if (health / Health <= specialAttackThreshold)
+            {
+                SpecialAttack();
+            }
+            lastAttackTime = Time.time;
+        }
+    }
+    private void SpecialAttack()
+    {
+        // 여러 방향으로 에너지 파동 발사
+        int numberOfProjectiles = 8; // 발사할 프로젝타일 수
+        float angleStep = 360f / numberOfProjectiles;
+        float angle = 0f;
+
+        for (int i = 0; i <= numberOfProjectiles - 1; i++)
+        {
+            float projectileDirXposition = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180);
+            float projectileDirYposition = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180);
+
+            Vector3 projectileVector = new Vector3(projectileDirXposition, projectileDirYposition, 0);
+            Vector3 projectileMoveDirection = (projectileVector - transform.position).normalized * 5f;
+
+            GameObject tmpObj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            tmpObj.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileMoveDirection.x, projectileMoveDirection.y);
+
+            angle += angleStep;
+        }
+    }
 
     public void OnBossDefeated()
     {

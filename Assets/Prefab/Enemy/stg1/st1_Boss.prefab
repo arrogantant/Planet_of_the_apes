@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8551723052597519491}
   - component: {fileID: 8551723052597519490}
-  - component: {fileID: -3018192838457659066}
   - component: {fileID: 5580560006931339213}
   - component: {fileID: 2320103530557044522}
+  - component: {fileID: 7695691458889763801}
   m_Layer: 6
   m_Name: st1_Boss
   m_TagString: Enemy
@@ -87,27 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &-3018192838457659066
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8551723052597519613}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!58 &5580560006931339213
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -143,7 +122,28 @@ MonoBehaviour:
   detectionRadius: 2
   despawnDistance: 20
   Speed: 1
-  Health: 20
+  Health: 40
   fastMonsterSprite: {fileID: -5286180679089938723, guid: 681ab1dc772e1d34291904a7134c1f43, type: 3}
   stageNumber: 0
-  victoryUI: {fileID: 7486086456558660830, guid: 9c3fe128b97e5424d8742966f51d57fb, type: 3}
+  projectilePrefab: {fileID: 8551723052597519613, guid: 32187d09ebc375b42a9e75649b2de21a, type: 3}
+--- !u!50 &7695691458889763801
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8551723052597519613}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

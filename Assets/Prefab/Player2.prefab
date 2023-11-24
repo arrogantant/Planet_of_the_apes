@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  PlayerHP: 20
+  PlayerHP: 40
   attackCollider: {fileID: 116035406416981086}
   virtualJoystick: {fileID: 0}
 --- !u!114 &151860958620498296
