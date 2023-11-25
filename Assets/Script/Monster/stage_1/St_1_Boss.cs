@@ -8,7 +8,7 @@ public class St_1_Boss : Monster
     public float Health = 80f;
     public Sprite fastMonsterSprite;
     public int stageNumber = 0;
-    private float specialAttackThreshold = 0.5f; // 체력이 50% 이하일 때 특수 공격 사용
+    private float specialAttackThreshold = 0.8f; // 체력이 50% 이하일 때 특수 공격 사용
     private float lastAttackTime;
     private float attackCooldown = 2f;
     public GameObject projectilePrefab;

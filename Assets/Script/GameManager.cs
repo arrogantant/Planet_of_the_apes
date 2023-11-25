@@ -216,8 +216,12 @@ public class GameManager : MonoBehaviour
             Destroy(monster);
         }
 
+        // 보스 몬스터의 스폰 위치를 계산합니다.
+        // 예시: 플레이어의 위치에서 앞으로 10 유닛 떨어진 곳
+        Vector3 spawnPosition = playerTransform.position + playerTransform.forward * 50;
+
         // 보스 몬스터를 스폰합니다.
-        Instantiate(bossPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
     }
 
     IEnumerator SpawnMonsters()

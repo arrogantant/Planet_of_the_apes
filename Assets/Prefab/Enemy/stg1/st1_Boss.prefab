@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5286180679089938723, guid: 681ab1dc772e1d34291904a7134c1f43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db19a9f547603654c8df6d4a0bf54b16, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.3, y: 0.24}
+  m_Size: {x: 2.775, y: 2.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,9 +100,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0032917026, y: -0.01801079}
+  m_Offset: {x: 0.06886767, y: -0.16531958}
   serializedVersion: 2
-  m_Radius: 0.089418225
+  m_Radius: 0.5881651
 --- !u!114 &2320103530557044522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,10 +122,11 @@ MonoBehaviour:
   detectionRadius: 2
   despawnDistance: 20
   Speed: 1
-  Health: 40
-  fastMonsterSprite: {fileID: -5286180679089938723, guid: 681ab1dc772e1d34291904a7134c1f43, type: 3}
+  Health: 300
+  fastMonsterSprite: {fileID: 21300000, guid: db19a9f547603654c8df6d4a0bf54b16, type: 3}
   stageNumber: 0
   projectilePrefab: {fileID: 8551723052597519613, guid: 32187d09ebc375b42a9e75649b2de21a, type: 3}
+  rushSpeed: 10
 --- !u!50 &7695691458889763801
 Rigidbody2D:
   serializedVersion: 4
@@ -134,7 +135,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8551723052597519613}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
