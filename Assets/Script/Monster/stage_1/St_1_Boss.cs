@@ -8,10 +8,11 @@ public class St_1_Boss : Monster
     public float Health = 80f;
     public Sprite fastMonsterSprite;
     public int stageNumber = 0;
-    private float specialAttackThreshold = 0.8f; // 체력이 50% 이하일 때 특수 공격 사용
+    private float specialAttackThreshold = 0.8f; // 체력이 80% 이하일 때 특수 공격 사용
     private float lastAttackTime;
     private float attackCooldown = 2f;
     public GameObject projectilePrefab;
+
     private void Update()
     {
         base.Update();
@@ -25,6 +26,7 @@ public class St_1_Boss : Monster
             lastAttackTime = Time.time;
         }
     }
+
     private void SpecialAttack()
     {
         // 여러 방향으로 에너지 파동 발사
@@ -89,4 +91,20 @@ public class St_1_Boss : Monster
         PlayerPrefs.Save();
     }
 
+    // 체력 감소시 호출되는 메서드
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        StartCoroutine(FlashColor()); // 체력 감소 시 색상 변경
+
+        // ... 나머지 피해 처리 로직 ...
+    }
+
+    // 색상 변경 코루틴
+    private IEnumerator FlashColor()
+    {
+        spriteRenderer.color = Color.red; // 색상을 빨간색으로 변경
+        yield return new WaitForSeconds(0.1f); // 짧은 시간 동안 색상 유지
+        spriteRenderer.color = Color.white; // 원래 색상으로 돌아감
+    }
 }

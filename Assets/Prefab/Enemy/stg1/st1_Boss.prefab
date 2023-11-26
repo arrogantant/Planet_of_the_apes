@@ -122,11 +122,10 @@ MonoBehaviour:
   detectionRadius: 2
   despawnDistance: 20
   Speed: 1
-  Health: 300
+  Health: 600
   fastMonsterSprite: {fileID: 21300000, guid: db19a9f547603654c8df6d4a0bf54b16, type: 3}
   stageNumber: 0
   projectilePrefab: {fileID: 8551723052597519613, guid: 32187d09ebc375b42a9e75649b2de21a, type: 3}
-  rushSpeed: 10
 --- !u!50 &7695691458889763801
 Rigidbody2D:
   serializedVersion: 4
